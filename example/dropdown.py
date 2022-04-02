@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+import tkinter.ttk as ttk
 
 if (__name__ == '__main__'):
     root = tk.Tk()
@@ -8,15 +8,15 @@ if (__name__ == '__main__'):
 
     items = ("Alice", "Bob", "Carol")
 
-    # DropDownList
+    # OptionMenu
     val = tk.StringVar(value=items[1])
-    opt = tk.OptionMenu(root, val, *items, command=lambda x:print(val.get(), x))
+    opt = tk.OptionMenu(root, val, *items, command=lambda e:print(e, val.get()))
     opt.pack(pady=10)
 
     # Combobox
     cmb = ttk.Combobox(root, values=items, state="readonly")
     cmb.current(1)
-    cmb.bind("<<ComboboxSelected>>", lambda x:print(cmb.get(), x))
+    cmb.bind("<<ComboboxSelected>>", lambda e:print(e, cmb.get()))
     cmb.pack(pady=10)
 
     root.mainloop()
