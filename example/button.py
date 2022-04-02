@@ -1,15 +1,18 @@
 import tkinter as tk
-from tkinter import messagebox
-
-def OnButtonClicked():
-    messagebox.showinfo(title=None, message="hello world !")
+import tkinter.ttk as ttk
 
 if (__name__ == '__main__'):
     root = tk.Tk()
     root.title("PyTkinter")
     root.geometry("400x300")
 
-    button = tk.Button(master=root, text="click", command=OnButtonClicked)
-    button.pack(expand=True)
+    # Button via Tk
+    btntk = tk.Button(master=root, text="tk", command=lambda:print("Clicked: tk"))
+    btntk.pack(pady=8)
+
+    # Button via Ttk
+    btnttk = ttk.Button(master=root, text="ttk")
+    btnttk.bind("<ButtonRelease>", lambda e:print("Clicked: ttk", e))
+    btnttk.pack(pady=8)
 
     root.mainloop()
